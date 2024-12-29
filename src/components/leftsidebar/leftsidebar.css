@@ -1,0 +1,76 @@
+.leftsidebar{
+    background: #b2cbf2;
+    color: #042369;
+    height: 75vh;
+}
+.leftsidebar-top{
+    padding: 20px;
+}
+.leftsidebar-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.leftsidebar-nav .logo{
+    max-width: 140px;
+}
+.leftsidebar-nav .menu img{
+    max-height: 20px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+.leftsidebar-search{
+    background-color: #d1dff6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-top: 20px;
+}
+.leftsidebar-search img{
+    width: 16px;
+}
+.leftsidebar-search input{
+    background:transparent;
+    border: none;
+    outline: none;
+    color: #042369;
+    font-size: 11px;
+}
+.leftsidebar-search input::placeholder{
+    color: #5c5c5c;
+}
+.leftsidebar-list{
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    overflow-y: scroll;
+}
+.friends img{
+    width: 35px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.friends{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.friends div{
+    display: flex;
+    flex-direction: column;
+}
+.friends span{
+    color: #687ba5;
+    font-size: 11px;
+}
+.friends:hover{
+    background-color: #1d3878;
+    color: white;
+}
+.friends:hover span{
+    color: white;
+}
