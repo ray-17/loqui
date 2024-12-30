@@ -10,6 +10,11 @@ const LeftSideBar = () => {
           <img src={assets.loqui_logo} className='logo' alt="" />
           <div className="menu">
             <img src={assets.menu_icon} alt="" />
+            <div className="sub-menu">
+              <p>Edit Profile</p>
+              <hr />
+              <p>Log out</p>
+            </div>
           </div>
         </div>
         <div className="leftsidebar-search">
