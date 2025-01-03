@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC1XCC8eml-4kYVLjzVrsaTeJ77jz1yOSk",
+  apiKey: "",
   authDomain: "loqui-e1790.firebaseapp.com",
   projectId: "loqui-e1790",
   storageBucket: "loqui-e1790.firebasestorage.app",
