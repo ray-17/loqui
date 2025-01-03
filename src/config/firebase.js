@@ -1,22 +1,14 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "loqui-e1790.firebaseapp.com",
-  projectId: "loqui-e1790",
-  storageBucket: "loqui-e1790.firebasestorage.app",
-  messagingSenderId: "414872428047",
-  appId: "1:414872428047:web:ba8e71428898d51ba08d7a"
+ 
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
