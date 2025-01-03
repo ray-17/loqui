@@ -1,33 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import Login from './pages/login/login'
+import Chat from './pages/chat/chat'
+import Profile_Update from './pages/profile_update/profile_update'
+import { ToastContainer, toast } from 'react-toastify';
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from './config/firebase'
+import { useContext } from 'react'
+import { AppContext } from './context/AppContext'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+  const navigate = useNavigate();
+  const {loaduserdata} = useContext(AppContext)
+
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user)=> {
+      if(user){
+        navigate('/chat')
+        //console.log(user);
+        await loaduserdata(user.uid)
+      }
+      else{
+          navigate('/')
+      }
+    })
+  },[])
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <ToastContainer/>
+    <Routes>
+      <Route path='/' element={<Login/>}/>
+      <Route path='/chat' element={<Chat/>}/>
+      <Route path='/profile' element={<Profile_Update/>}/>
+    </Routes>
     </>
   )
 }
