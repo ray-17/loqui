@@ -10,7 +10,10 @@ const AppContextProvider = (props) => {
 
     const navigate = useNavigate();
     const [userdata, setuserdata] = useState(null);
-    const [chatdata, setchatdata] = useState(null);
+    const [chatData, setchatData] = useState(null);
+    const [messagesId, setMessagesId] = useState(null);
+    const [messages, setMessages] = useState([]);
+    const [chatUser, setChatUser] = useState(null);
 
     const loaduserdata = async (uid) =>{
         try {
@@ -27,7 +30,7 @@ const AppContextProvider = (props) => {
                 lastSeen:Date.now()
             })
             setInterval(async () =>{
-                if(auth.chatuser){
+                if(auth.chatUser){
                     await updateDoc(userReference,{
                         lastSeen:Date.now()
                     })
@@ -45,13 +48,13 @@ const AppContextProvider = (props) => {
                 const chatItem = response.data().chatData;
                 const tempData = [];
                 for(const item of chatItem){
-                    const userReference = doc(db, 'users', item.rId)
+                    const userReference = doc(db, 'users', item.receiverId)
                     const userSnap = await getDoc(userReference);
-                    const userData = userSnap.data();
+                    const userdata = userSnap.data();
 
-                    tempData.push({...item, userData})
+                    tempData.push({...item, userdata})
                 }
-                setchatdata(tempData.sort((a,b)=> b.updatedAt - a.updatedAt))
+                setchatData(tempData.sort((a,b)=> b.updatedAt - a.updatedAt))
             })
             return ()=> {
                 unSub();
@@ -61,8 +64,11 @@ const AppContextProvider = (props) => {
 
     const value = {
         userdata,setuserdata,
-        chatdata,setchatdata,
-        loaduserdata
+        chatData,setchatData,
+        loaduserdata,
+        messages,setMessages,
+        messagesId,setMessagesId,
+        chatUser,setChatUser
     }
 
     return (
